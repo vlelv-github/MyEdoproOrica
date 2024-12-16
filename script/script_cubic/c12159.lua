@@ -1,4 +1,4 @@
--- 방계초신 크림즌 바하라
+-- 방계초신 크림즌 바라하
 local s,id=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
