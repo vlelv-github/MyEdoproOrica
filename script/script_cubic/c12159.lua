@@ -2,6 +2,8 @@
 local s,id=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
+	-- 1턴에 1번밖에 특수 소환 불가
+	c:SetSPSummonOnce(id)
 	-- 자신의 방법으로만 특수 소환 가능
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
