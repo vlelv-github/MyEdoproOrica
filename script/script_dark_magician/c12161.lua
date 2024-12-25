@@ -47,7 +47,7 @@ s.listed_names = {CARD_DARK_MAGICIAN, CARD_DARK_MAGICIAN_GIRL}
 
 
 function s.cfilter(c,tp)
-	return c:IsFaceup() and c:IsOriginalCode(CARD_DARK_MAGICIAN, CARD_DARK_MAGICIAN_GIRL)
+	return c:IsFaceup() and c:IsOriginalCodeRule(CARD_DARK_MAGICIAN, CARD_DARK_MAGICIAN_GIRL)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp)
