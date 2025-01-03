@@ -28,7 +28,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
     -- "RR(레이드 랩터즈)", "RUM(랭크 업 매직)"의 테마명이 쓰여짐
-s.listed_seires = {SET_RAIDRAPTOR, SET_RANK_UP_MAGIC}
+s.listed_series = {SET_RAIDRAPTOR, SET_RANK_UP_MAGIC}
 
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

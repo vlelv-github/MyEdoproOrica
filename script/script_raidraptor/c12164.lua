@@ -49,7 +49,7 @@ function s.initial_effect(c)
 	end)
 end
     -- "RR(레이드 랩터즈)", "RUM(랭크 업 매직)"의 테마명이 쓰여짐
-s.listed_seires = {SET_RAIDRAPTOR, SET_RANK_UP_MAGIC}
+s.listed_series = {SET_RAIDRAPTOR, SET_RANK_UP_MAGIC}
 function s.spfilter(c)
 	return c:IsFaceup() and c:IsSetCard(SET_RAIDRAPTOR)
 end
@@ -89,7 +89,7 @@ end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and s.spfilter(chkc) end
 	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOHAND)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,s.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
