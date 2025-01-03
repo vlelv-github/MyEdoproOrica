@@ -51,7 +51,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4,false,REGISTER_FLAG_DETACH_XMAT)
 end
     -- "RR(레이드 랩터즈)"의 테마명이 쓰여짐
-s.listed_seires = {SET_RAIDRAPTOR}
+s.listed_series = {SET_RAIDRAPTOR}
     -- 1번 효과
 function s.attachcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
