@@ -53,12 +53,14 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_ONFIELD,LOCATION_ONFIELD,TYPE_SPELL+TYPE_TRAP)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local tg=sg:Select(tp,1,1,nil)
-		Duel.HintSelection(tg)
-		Duel.Destroy(tg,REASON_EFFECT)
+	if Duel.NegateActivation(ev) then
+		local sg=Duel.GetMatchingGroup(Card.IsSpellTrap,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
+			if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+			Duel.BreakEffect()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+			local tg=sg:Select(tp,1,1,nil)
+			Duel.HintSelection(tg)
+			Duel.Destroy(tg,REASON_EFFECT)
+		end
 	end
 end
