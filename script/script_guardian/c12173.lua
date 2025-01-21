@@ -30,7 +30,7 @@ function s.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e4:SetProperty(EFFECT_FLAG_DELAY)
+	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e4:SetCode(EVENT_EQUIP)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCondition(s.tgcon)
@@ -41,7 +41,7 @@ end
     -- "가디언 에아토스"의 카드명이 쓰여짐
 s.listed_names = {34022290}
     -- "가디언"의 테마명이 쓰여짐
-s.listed_series = {0x82}
+s.listed_series = {0x52}
 function s.atktg(e,c)
 	-- 몬스터에 장착되어 있는 카드중에서, 자신에게 카드명이 쓰여진 카드를 장착하고 있는지 확인
 	local equip_cards = c:GetEquipGroup()
@@ -79,6 +79,17 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if sp and Duel.SpecialSummon(sp,0,tp,tp,false,false,POS_FACEUP) and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.BreakEffect()
 		Duel.Equip(tp,tc,sp)
+		if tc:IsOriginalType(TYPE_MONSTER) then 
+			-- 장착 취급의 몬스터인 경우
+			--Equip limit
+			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_EQUIP_LIMIT)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+			e1:SetValue(function(e,c) return c==e:GetLabelObject() end)
+			e1:SetLabelObject(sp)
+			tc:RegisterEffect(e1)
+		end
 	end
 end
 function s.tgfilter(c,tp)
