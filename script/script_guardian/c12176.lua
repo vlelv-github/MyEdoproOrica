@@ -3,14 +3,14 @@ local s,id=GetID()
 function s.initial_effect(c)
 	-- 장착 마법
 	aux.AddEquipProcedure(c)
-	-- 1번 효과
+	-- 2번 효과
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_EQUIP)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(300)
 	c:RegisterEffect(e1)
-	-- 2번 효과
+	-- 3번 효과
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -19,7 +19,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.anntg)
 	e2:SetOperation(s.annop)
 	c:RegisterEffect(e2)
-	-- 3번 효과
+	-- 4번 효과
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,2))
 	e3:SetCategory(CATEGORY_EQUIP)
@@ -31,11 +31,12 @@ function s.initial_effect(c)
 	e3:SetTarget(s.eqtg)
 	e3:SetOperation(s.eqop)
 	c:RegisterEffect(e3)
-	-- 룰상 "나비의 단검-엘마"로 취급
+	-- 1번 효과
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e0:SetCode(EFFECT_CHANGE_CODE)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e0:SetRange(LOCATION_SZONE|LOCATION_GRAVE)
 	e0:SetValue(69243953)
 	c:RegisterEffect(e0)
 end
