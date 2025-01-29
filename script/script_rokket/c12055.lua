@@ -11,7 +11,7 @@ function s.initial_effect(c)
 	e1:SetCountLimit(1,id)
 	e1:SetCondition(s.descon)
 	e1:SetTarget(s.destg)
-	e1:SetOperation(s.desop)
+	e1:SetOperation(s.desop) 
 	c:RegisterEffect(e1)
 	-- 2번 효과
 	local e2=Effect.CreateEffect(c)
