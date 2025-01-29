@@ -31,7 +31,7 @@ function s.initial_effect(c)
 	-- "카운터" 카운터 함정 카드를 세트
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,3))
-	e4:SetCode(EVENT_CHAIN_SOLVED)
+	e4:SetCode(EVENT_CHAINING)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetRange(LOCATION_SZONE)
